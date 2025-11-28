@@ -32,6 +32,7 @@
   footer {text-align:center; padding:25px; margin-top:30px; background:#222; color:white;}
   @keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
   @keyframes slideDown {from{transform:translateY(-30px); opacity:0;} to{transform:translateY(0); opacity:1;}}
+  img {max-width:100%; height:auto; display:block;}
   @media (max-width:768px) { .landscape-gallery {grid-template-columns:1fr;} .portrait-gallery {grid-template-columns:1fr 1fr;} }
   @media (max-width:480px) { .portrait-gallery {grid-template-columns:1fr;} nav a {flex:1 1 100%; margin-bottom:5px;} }
 </style>
@@ -128,19 +129,27 @@
   closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
   lightbox.addEventListener('click', e => { if(e.target !== lightboxImg) lightbox.style.display = 'none'; });
 
-  const faders = document.querySelectorAll('.section, .image-card, .pdf-container');
-  const appearOptions = {threshold:0.2, rootMargin:"0px 0px -50px 0px"};
-  const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
+  // Fade-in animation for desktop only
+  if(window.innerWidth > 768){
+    const faders = document.querySelectorAll('.section, .image-card, .pdf-container');
+    const appearOptions = {threshold:0.2, rootMargin:"0px 0px -50px 0px"};
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  } else {
+    // Show everything immediately on mobile
+    document.querySelectorAll('.section, .image-card, .pdf-container').forEach(el => {
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0)";
     });
-  }, appearOptions);
-
-  faders.forEach(fader => appearOnScroll.observe(fader));
+  }
 </script>
 </body>
 </html>
