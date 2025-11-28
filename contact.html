@@ -1,56 +1,80 @@
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact - Water Treatment & Piping Works</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Tri Arrow Resources</title>
 <style>
-body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; color:#333;}
-header {background:#0066cc; color:white; padding:20px; text-align:center;}
-nav {background:#004a99; padding:10px; text-align:center;}
-nav a {color:white; margin:0 15px; text-decoration:none; font-weight:bold;}
-nav a:hover {text-decoration:underline;}
-.section {max-width:900px; margin:auto; padding:30px 20px; background:white; margin-top:20px; border-radius:8px;}
-h2 {color:#0066cc;}
-form {display:flex; flex-direction:column;}
-input, textarea {margin-bottom:10px; padding:10px; border:1px solid #ccc; border-radius:5px;}
-button {padding:10px; background:#0066cc; color:white; border:none; border-radius:5px; cursor:pointer;}
-button:hover {background:#004a99;}
-footer {text-align:center; padding:20px; margin-top:30px; background:#222; color:white;}
+  body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; color:#333;}
+  header {background:#0066cc; color:white; padding:30px 20px; text-align:center; animation: slideDown 1s ease;}
+  nav {background:#004a99; padding:12px; text-align:center; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
+  nav a {color:white; padding:8px 16px; text-decoration:none; font-weight:bold; border-radius:5px; transition:0.3s;}
+  nav a:hover {background:#003366;}
+  .section {max-width:800px; margin:auto; padding:40px 25px; background:white; margin-top:25px; border-radius:12px; box-shadow:0 8px 18px rgba(0,0,0,0.1); opacity:0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease;}
+  h2 {color:#0066cc; text-align:center; margin-bottom:25px;}
+  form {display:flex; flex-direction:column;}
+  label {margin:10px 0 5px; font-weight:bold;}
+  input, textarea {padding:12px; border-radius:6px; border:1px solid #ccc; margin-bottom:15px; font-size:16px;}
+  button {padding:14px 25px; background:#0066cc; color:white; font-weight:bold; border:none; border-radius:6px; cursor:pointer; font-size:16px; transition:0.3s;}
+  button:hover {background:#004a99; transform: scale(1.03);}
+  footer {text-align:center; padding:25px; margin-top:30px; background:#222; color:white;}
+  @keyframes slideDown {from{transform:translateY(-30px); opacity:0;} to{transform:translateY(0); opacity:1;}}
 </style>
 </head>
 <body>
+
 <header>
-<h1>Contact</h1>
-<p>Get in Touch</p>
+  <h1>Contact Us</h1>
+  <p>Get in touch with Tri Arrow Resources</p>
 </header>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="services.html">Services</a>
-<a href="projects.html">Projects</a>
-<a href="contact.html">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
 <div class="section">
-<h2>Contact Information</h2>
-<p><strong>Company Name:</strong> TRI ARROW RESOURCES</p>
-<p><strong>Email:</strong> triarrowr@gmail.com</p>
-<p><strong>Phone:</strong> 010-360-3021</p>
-<p><strong>Address:</strong> 81, Jalan Anggerik Aranda 31/2,Kota Kemuning, 40460 Shah Alam,Selangor, Malaysia</p>
+  <h2>Contact Information</h2>
+  <p style="text-align:center;">81, Jalan Anggerik Aranda 31/2, Kota Kemuning, 40460, Shah Alam, Selangor, Malaysia</p>
+  <p style="text-align:center;">Email: info@triarrowresources.com | Phone: +60 12-345 6789</p>
+</div>
 
-<h2>Send Us a Message</h2>
-<form>
-<input type="text" placeholder="Your Name" required />
-<input type="email" placeholder="Your Email" required />
-<textarea placeholder="Your Message" rows="5" required></textarea>
-<button type="submit">Send Message</button>
-</form>
+<div class="section">
+  <h2>Send Us a Message</h2>
+  <form>
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Your Name" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="Your Email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" rows="6" placeholder="Type your message here..." required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
 </div>
 
 <footer>
-© 2025 [TRI ARROW RESOURCES] — Water Treatment & Piping Works Contractor
+  © 2025 Tri Arrow Resources — Water Treatment & Piping Works Contractor
 </footer>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const appearOptions = {threshold:0.2, rootMargin:"0px 0px -50px 0px"};
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = "translateY(0)";
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+  sections.forEach(section => appearOnScroll.observe(section));
+</script>
+
 </body>
 </html>
