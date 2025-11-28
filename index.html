@@ -6,67 +6,169 @@
 <title>Home - Tri Arrow Resources</title>
 
 <style>
-  body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; color:#333;}
+  body {font-family: 'Arial', sans-serif; margin:0; padding:0; background:#f4f4f4; color:#333;}
 
-  /* HERO BANNER */
+  /* PREMIUM GLASSMORPHISM NAV BAR */
+  .glass-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 12px 24px;
+    display: flex;
+    gap: 8px;
+    z-index: 1000;
+    box-shadow: 
+      0 8px 32px rgba(0, 70, 153, 0.1),
+      0 4px 16px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .glass-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 12px 40px rgba(0, 70, 153, 0.15),
+      0 6px 20px rgba(255, 255, 255, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateX(-50%) translateY(-2px);
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.1), 
+      transparent);
+    transition: left 0.6s ease;
+  }
+
+  .nav-link:hover::before {
+    left: 100%;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 
+      inset 0 2px 4px rgba(255, 255, 255, 0.2),
+      0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .glass-nav {
+      top: 10px;
+      padding: 10px 16px;
+      border-radius: 14px;
+    }
+    
+    .nav-link {
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .glass-nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 90%;
+    }
+    
+    .nav-link {
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+  }
+
+  /* HERO BANNER - Enhanced to work with fixed nav */
   .hero-section {
     position: relative;
     width: 100%;
-    height: 260px;
-    background: url('images/banner.jpg') no-repeat center center/cover;
+    height: 100vh;
+    background: 
+      linear-gradient(135deg, rgba(0, 70, 153, 0.8) 0%, rgba(0, 102, 204, 0.6) 100%),
+      url('images/banner.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
   }
+  
   .hero-section .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0, 0, 0, 0.3);
   }
+  
   .hero-content {
     position: relative;
     z-index: 2;
   }
+  
   .hero-content h1 {
-    font-size: 2.4rem;
-    margin: 0;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    font-size: 3.5rem;
+    margin: 0 0 20px 0;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    letter-spacing: 1px;
   }
+  
   .hero-content p {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  }
-  @media (max-width: 600px) {
-    .hero-section {height: 180px;}
-    .hero-content h1 {font-size: 1.7rem;}
-    .hero-content p {font-size: 1rem;}
+    margin-top: 0;
+    font-size: 1.4rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: 300;
+    letter-spacing: 0.5px;
   }
 
-  /* NAVIGATION */
-  nav {
-    background:#004a99;
-    padding:12px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+    }
   }
-  nav a {
-    color:white;
-    padding:8px 18px;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:6px;
-    transition:0.3s;
-    text-align:center;
-    white-space:nowrap;
-  }
-  nav a:hover {background:#003366;}
 
-  /* PAGE SECTIONS - REMOVED INITIAL HIDING */
+  /* Rest of your existing styles... */
   .section {
     max-width:1100px;
     margin:auto;
@@ -77,14 +179,15 @@
     border-radius:12px;
     box-shadow:0 8px 18px rgba(0,0,0,0.1);
   }
+  
   h2 {
     color:#0066cc;
     margin-bottom:20px;
     text-align:center;
   }
+  
   h3 {margin-top:15px; color:#004a99;}
 
-  /* Content Cards */
   .content-card {
     background: #f8f9fa;
     padding: 20px;
@@ -96,11 +199,11 @@
   ul {line-height:1.8; font-size:17px; padding-left:20px;}
   li {margin-bottom:8px;}
 
-  /* PDF BUTTON */
   .pdf-container {
     margin-bottom:30px; 
     text-align:center; 
   }
+  
   .pdf-link {
     display:inline-block;
     margin-top:15px; 
@@ -113,13 +216,13 @@
     font-size:16px;
     transition:0.3s;
   }
+  
   .pdf-link:hover {
     background:#004a99; 
     transform: scale(1.05);
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
   }
 
-  /* GALLERY - TIGHTER LAYOUT */
   .gallery-section {
     max-width:1100px;
     margin:auto;
@@ -137,6 +240,7 @@
     gap:15px; 
     margin-bottom:20px;
   }
+  
   .portrait-gallery {
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
@@ -152,6 +256,7 @@
     box-shadow:0 3px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
   }
+  
   .image-card img {
     width:100%; 
     height:180px;
@@ -159,11 +264,14 @@
     display:block; 
     transition: transform 0.3s;
   }
+  
   .image-card:hover img {transform: scale(1.05);}
+  
   .image-card:hover {
     box-shadow:0 5px 12px rgba(0,0,0,0.15);
     transform: translateY(-3px);
   }
+  
   .caption {
     position:absolute;
     bottom:0; 
@@ -177,18 +285,19 @@
     opacity:0; 
     transition:opacity 0.3s;
   }
+  
   .image-card:hover .caption {opacity:1;}
 
-  /* LIGHTBOX */
   .lightbox {
     display:none;
     position:fixed;
-    z-index:999;
+    z-index:1001;
     padding-top:60px;
     inset:0;
     overflow:auto;
     background-color: rgba(0,0,0,0.9);
   }
+  
   .lightbox-content {
     margin:auto;
     display:block;
@@ -197,6 +306,7 @@
     border-radius:10px;
     box-shadow:0 0 25px rgba(0,0,0,0.5);
   }
+  
   .lightbox-close {
     position:absolute;
     top:20px; 
@@ -207,9 +317,9 @@
     cursor:pointer;
     transition:0.3s;
   }
+  
   .lightbox-close:hover {color:#bbb;}
 
-  /* Contact Info */
   .contact-info {
     display:flex;
     flex-direction:column;
@@ -218,6 +328,7 @@
     font-size:17px;
     line-height:1.6;
   }
+  
   .contact-info p {
     margin:0;
     padding:12px 20px;
@@ -242,6 +353,14 @@
 
 <!-- HERO BANNER -->
 <header class="hero-section">
+  <!-- PREMIUM GLASSMORPHISM NAV BAR -->
+  <nav class="glass-nav">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+  
   <div class="overlay"></div>
   <div class="hero-content">
     <h1>Tri Arrow Resources</h1>
@@ -249,15 +368,7 @@
   </div>
 </header>
 
-<!-- NAVBAR -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
-<!-- COMPANY OVERVIEW -->
+<!-- Rest of your content remains the same -->
 <div class="section">
   <h2>Company Overview</h2>
   <div class="content-card">
@@ -270,7 +381,6 @@
   </div>
 </div>
 
-<!-- VISION & MISSION -->
 <div class="section">
   <h2>Vision & Mission</h2>
   
@@ -290,7 +400,6 @@
   </div>
 </div>
 
-<!-- PORTFOLIO SECTION - COMPACT LAYOUT -->
 <div class="gallery-section">
   <h2>Our Work Portfolio</h2>
 
@@ -300,7 +409,6 @@
        target="_blank" class="pdf-link">Download Project Portfolio (PDF)</a>
   </div>
 
-  <!-- LANDSCAPE -->
   <div class="landscape-gallery">
     <a class="image-card" href="images/photo_industrial_piping_2025-11-15.jpeg">
       <img src="images/photo_industrial_piping_2025-11-15.jpeg">
@@ -323,7 +431,6 @@
     </a>
   </div>
 
-  <!-- PORTRAIT -->
   <div class="portrait-gallery">
     <a class="image-card" href="images/Photo_Piping-System_Red-and-Yellow.jpeg">
       <img src="images/Photo_Piping-System_Red-and-Yellow.jpeg">
@@ -372,7 +479,6 @@
   </div>
 </div>
 
-<!-- CONTACT SECTION -->
 <div class="section">
   <h2>Contact Details</h2>
   <div class="contact-info">
@@ -382,7 +488,6 @@
   </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div id="lightbox" class="lightbox">
   <span class="lightbox-close">&times;</span>
   <img class="lightbox-content" id="lightbox-img">
@@ -393,7 +498,6 @@
 </footer>
 
 <script>
-  // Lightbox functionality only - removed scroll animations
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const closeBtn = document.querySelector('.lightbox-close');
@@ -409,6 +513,14 @@
   closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
   lightbox.addEventListener('click', e => { 
     if(e.target !== lightboxImg) lightbox.style.display = 'none'; 
+  });
+
+  // Add active class to current page nav link
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if(link.getAttribute('href') === currentPage) {
+      link.classList.add('active');
+    }
   });
 </script>
 
