@@ -116,14 +116,12 @@
     }
   }
 
-  /* HERO BANNER - Enhanced to work with fixed nav */
+  /* HERO BANNER - Clean without blue overlay */
   .hero-section {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: 
-      linear-gradient(135deg, rgba(0, 70, 153, 0.8) 0%, rgba(0, 102, 204, 0.6) 100%),
-      url('images/banner.jpg') no-repeat center center/cover;
+    background: url('images/banner.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,10 +129,11 @@
     color: white;
   }
   
+  /* Remove the blue gradient overlay - only keep dark overlay for text readability */
   .hero-section .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3); /* Only dark overlay for contrast */
   }
   
   .hero-content {
@@ -166,6 +165,13 @@
     .hero-content p {
       font-size: 1.2rem;
     }
+  }
+
+  /* Add some spacing for content below hero */
+  .content-wrapper {
+    margin-top: -80px; /* Pull content up slightly */
+    position: relative;
+    z-index: 1;
   }
 
   /* Rest of your existing styles... */
@@ -368,123 +374,126 @@
   </div>
 </header>
 
-<!-- Rest of your content remains the same -->
-<div class="section">
-  <h2>Company Overview</h2>
-  <div class="content-card">
-    <p>
-      Tri Arrow Resources specializes in piping works, mechanical installations,
-      and integrated engineering solutions for water and wastewater treatment plants.
-      We deliver high-quality, safe, and reliable project execution for municipal,
-      industrial, and commercial clients.
-    </p>
-  </div>
-</div>
-
-<div class="section">
-  <h2>Vision & Mission</h2>
-  
-  <div class="content-card">
-    <h3>Vision</h3>
-    <p>To be a trusted leader in water treatment mechanical and piping solutions.</p>
+<!-- Content Wrapper -->
+<div class="content-wrapper">
+  <!-- Rest of your content remains the same -->
+  <div class="section">
+    <h2>Company Overview</h2>
+    <div class="content-card">
+      <p>
+        Tri Arrow Resources specializes in piping works, mechanical installations,
+        and integrated engineering solutions for water and wastewater treatment plants.
+        We deliver high-quality, safe, and reliable project execution for municipal,
+        industrial, and commercial clients.
+      </p>
+    </div>
   </div>
 
-  <div class="content-card">
-    <h3>Mission</h3>
-    <ul>
-      <li>Deliver safe, durable, and efficient piping systems.</li>
-      <li>Adopt innovative engineering methods.</li>
-      <li>Build long-term partnerships through quality and integrity.</li>
-      <li>Support environmental sustainability.</li>
-    </ul>
-  </div>
-</div>
+  <div class="section">
+    <h2>Vision & Mission</h2>
+    
+    <div class="content-card">
+      <h3>Vision</h3>
+      <p>To be a trusted leader in water treatment mechanical and piping solutions.</p>
+    </div>
 
-<div class="gallery-section">
-  <h2>Our Work Portfolio</h2>
-
-  <div class="pdf-container">
-    <p>Click below to view our detailed project portfolio in PDF:</p>
-    <a href="files/TRI ARROW RESOURCES SITE CONSTRUCTION PROGRESS PICTURES.pdf"
-       target="_blank" class="pdf-link">Download Project Portfolio (PDF)</a>
-  </div>
-
-  <div class="landscape-gallery">
-    <a class="image-card" href="images/photo_industrial_piping_2025-11-15.jpeg">
-      <img src="images/photo_industrial_piping_2025-11-15.jpeg">
-      <div class="caption">Industrial Piping</div>
-    </a>
-
-    <a class="image-card" href="images/Photo_Industrial_Piping_Scaffolding_2025-11-20.jpeg">
-      <img src="images/Photo_Industrial_Piping_Scaffolding_2025-11-20.jpeg">
-      <div class="caption">Industrial Piping Scaffolding</div>
-    </a>
-
-    <a class="image-card" href="images/photo_industrial_transformers_maintenance_2025-11-20.jpeg">
-      <img src="images/photo_industrial_transformers_maintenance_2025-11-20.jpeg">
-      <div class="caption">Transformers Maintenance</div>
-    </a>
-
-    <a class="image-card" href="images/Transformer_Photo_Industrial_Piping_2025_11_20.jpeg">
-      <img src="images/Transformer_Photo_Industrial_Piping_2025_11_20.jpeg">
-      <div class="caption">Transformer Piping</div>
-    </a>
+    <div class="content-card">
+      <h3>Mission</h3>
+      <ul>
+        <li>Deliver safe, durable, and efficient piping systems.</li>
+        <li>Adopt innovative engineering methods.</li>
+        <li>Build long-term partnerships through quality and integrity.</li>
+        <li>Support environmental sustainability.</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="portrait-gallery">
-    <a class="image-card" href="images/Photo_Piping-System_Red-and-Yellow.jpeg">
-      <img src="images/Photo_Piping-System_Red-and-Yellow.jpeg">
-      <div class="caption">Red & Yellow Piping</div>
-    </a>
+  <div class="gallery-section">
+    <h2>Our Work Portfolio</h2>
 
-    <a class="image-card" href="images/Photo_Industrial_Piping_System_2025-11-20.jpeg">
-      <img src="images/Photo_Industrial_Piping_System_2025-11-20.jpeg">
-      <div class="caption">Industrial Piping System</div>
-    </a>
+    <div class="pdf-container">
+      <p>Click below to view our detailed project portfolio in PDF:</p>
+      <a href="files/TRI ARROW RESOURCES SITE CONSTRUCTION PROGRESS PICTURES.pdf"
+         target="_blank" class="pdf-link">Download Project Portfolio (PDF)</a>
+    </div>
 
-    <a class="image-card" href="images/photo_fire_control_system_2025-11-15.jpeg">
-      <img src="images/photo_fire_control_system_2025-11-15.jpeg">
-      <div class="caption">Fire Control System</div>
-    </a>
+    <div class="landscape-gallery">
+      <a class="image-card" href="images/photo_industrial_piping_2025-11-15.jpeg">
+        <img src="images/photo_industrial_piping_2025-11-15.jpeg">
+        <div class="caption">Industrial Piping</div>
+      </a>
 
-    <a class="image-card" href="images/Wila_Trans_Engineering_Grid_Maintenance_Briefing_2025-11-20.jpeg">
-      <img src="images/Wila_Trans_Engineering_Grid_Maintenance_Briefing_2025-11-20.jpeg">
-      <div class="caption">Grid Maintenance</div>
-    </a>
+      <a class="image-card" href="images/Photo_Industrial_Piping_Scaffolding_2025-11-20.jpeg">
+        <img src="images/Photo_Industrial_Piping_Scaffolding_2025-11-20.jpeg">
+        <div class="caption">Industrial Piping Scaffolding</div>
+      </a>
 
-    <a class="image-card" href="images/Wila_Trans_Engineering_Site_Meeting_2025-11-20.jpeg">
-      <img src="images/Wila_Trans_Engineering_Site_Meeting_2025-11-20.jpeg">
-      <div class="caption">Site Meeting</div>
-    </a>
+      <a class="image-card" href="images/photo_industrial_transformers_maintenance_2025-11-20.jpeg">
+        <img src="images/photo_industrial_transformers_maintenance_2025-11-20.jpeg">
+        <div class="caption">Transformers Maintenance</div>
+      </a>
 
-    <a class="image-card" href="images/photo_industrial-equipment_cable-shaft.jpeg">
-      <img src="images/photo_industrial-equipment_cable-shaft.jpeg">
-      <div class="caption">Cable Shaft System</div>
-    </a>
+      <a class="image-card" href="images/Transformer_Photo_Industrial_Piping_2025_11_20.jpeg">
+        <img src="images/Transformer_Photo_Industrial_Piping_2025_11_20.jpeg">
+        <div class="caption">Transformer Piping</div>
+      </a>
+    </div>
 
-    <a class="image-card" href="images/Welding_Worker_Industrial.jpeg">
-      <img src="images/Welding_Worker_Industrial.jpeg">
-      <div class="caption">Welding Worker</div>
-    </a>
+    <div class="portrait-gallery">
+      <a class="image-card" href="images/Photo_Piping-System_Red-and-Yellow.jpeg">
+        <img src="images/Photo_Piping-System_Red-and-Yellow.jpeg">
+        <div class="caption">Red & Yellow Piping</div>
+      </a>
 
-    <a class="image-card" href="images/Pipes_Building_Colored_2025-11-20.jpeg">
-      <img src="images/Pipes_Building_Colored_2025-11-20.jpeg">
-      <div class="caption">Colored Pipes</div>
-    </a>
+      <a class="image-card" href="images/Photo_Industrial_Piping_System_2025-11-20.jpeg">
+        <img src="images/Photo_Industrial_Piping_System_2025-11-20.jpeg">
+        <div class="caption">Industrial Piping System</div>
+      </a>
 
-    <a class="image-card" href="images/welding_photo_2025-11-15.jpeg">
-      <img src="images/welding_photo_2025-11-15.jpeg">
-      <div class="caption">Welding Operation</div>
-    </a>
+      <a class="image-card" href="images/photo_fire_control_system_2025-11-15.jpeg">
+        <img src="images/photo_fire_control_system_2025-11-15.jpeg">
+        <div class="caption">Fire Control System</div>
+      </a>
+
+      <a class="image-card" href="images/Wila_Trans_Engineering_Grid_Maintenance_Briefing_2025-11-20.jpeg">
+        <img src="images/Wila_Trans_Engineering_Grid_Maintenance_Briefing_2025-11-20.jpeg">
+        <div class="caption">Grid Maintenance</div>
+      </a>
+
+      <a class="image-card" href="images/Wila_Trans_Engineering_Site_Meeting_2025-11-20.jpeg">
+        <img src="images/Wila_Trans_Engineering_Site_Meeting_2025-11-20.jpeg">
+        <div class="caption">Site Meeting</div>
+      </a>
+
+      <a class="image-card" href="images/photo_industrial-equipment_cable-shaft.jpeg">
+        <img src="images/photo_industrial-equipment_cable-shaft.jpeg">
+        <div class="caption">Cable Shaft System</div>
+      </a>
+
+      <a class="image-card" href="images/Welding_Worker_Industrial.jpeg">
+        <img src="images/Welding_Worker_Industrial.jpeg">
+        <div class="caption">Welding Worker</div>
+      </a>
+
+      <a class="image-card" href="images/Pipes_Building_Colored_2025-11-20.jpeg">
+        <img src="images/Pipes_Building_Colored_2025-11-20.jpeg">
+        <div class="caption">Colored Pipes</div>
+      </a>
+
+      <a class="image-card" href="images/welding_photo_2025-11-15.jpeg">
+        <img src="images/welding_photo_2025-11-15.jpeg">
+        <div class="caption">Welding Operation</div>
+      </a>
+    </div>
   </div>
-</div>
 
-<div class="section">
-  <h2>Contact Details</h2>
-  <div class="contact-info">
-    <p><strong>Engineering Manager:</strong> Shan Maran</p>
-    <p><strong>Phone:</strong> 010-3603021</p>
-    <p><strong>Email:</strong> triarrowr@gmail.com</p>
+  <div class="section">
+    <h2>Contact Details</h2>
+    <div class="contact-info">
+      <p><strong>Engineering Manager:</strong> Shan Maran</p>
+      <p><strong>Phone:</strong> 010-3603021</p>
+      <p><strong>Email:</strong> triarrowr@gmail.com</p>
+    </div>
   </div>
 </div>
 
