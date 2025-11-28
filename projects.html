@@ -7,8 +7,8 @@
 <style>
   body {font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; color:#333;}
   header {background:#0066cc; color:white; padding:30px 20px; text-align:center; animation: slideDown 1s ease;}
-  nav {background:#004a99; padding:12px; text-align:center; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
-  nav a {color:white; padding:8px 16px; text-decoration:none; font-weight:bold; border-radius:5px; transition:0.3s;}
+  nav {background:#004a99; padding:12px; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
+  nav a {color:white; padding:8px 16px; text-decoration:none; font-weight:bold; border-radius:5px; transition:0.3s; text-align:center;}
   nav a:hover {background:#003366;}
   .section {max-width:1100px; margin:auto; padding:40px 25px; background:white; margin-top:25px; border-radius:12px; box-shadow:0 8px 18px rgba(0,0,0,0.1); opacity:0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease;}
   h2 {color:#0066cc; margin-bottom:20px; text-align:center;}
@@ -30,6 +30,7 @@
   footer {text-align:center; padding:25px; margin-top:30px; background:#222; color:white;}
   @keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
   @keyframes slideDown {from{transform:translateY(-30px); opacity:0;} to{transform:translateY(0); opacity:1;}}
+  img {max-width:100%; height:auto; display:block;}
   @media (max-width:768px) { .landscape-gallery {grid-template-columns:1fr;} .portrait-gallery {grid-template-columns:1fr 1fr;} }
   @media (max-width:480px) { .portrait-gallery {grid-template-columns:1fr;} nav a {flex:1 1 100%; margin-bottom:5px;} }
 </style>
@@ -103,19 +104,25 @@
   closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
   lightbox.addEventListener('click', e => { if(e.target !== lightboxImg) lightbox.style.display = 'none'; });
 
-  const faders = document.querySelectorAll('.section, .image-card, .pdf-container');
-  const appearOptions = {threshold:0.2, rootMargin:"0px 0px -50px 0px"};
-  const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
+  if(window.innerWidth > 768){
+    const faders = document.querySelectorAll('.section, .image-card, .pdf-container');
+    const appearOptions = {threshold:0.2, rootMargin:"0px 0px -50px 0px"};
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  } else {
+    document.querySelectorAll('.section, .image-card, .pdf-container').forEach(el => {
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0)";
     });
-  }, appearOptions);
-
-  faders.forEach(fader => appearOnScroll.observe(fader));
+  }
 </script>
 </body>
 </html>
